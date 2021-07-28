@@ -1,0 +1,27 @@
+{
+  "name": "node-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "jest --coverage --run-in-band"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "koa": "^2.13.1",
+    "koa-body": "^4.2.0",
+    "koa-mount": "^4.0.0",
+    "koa-passport": "^4.1.4",
+    "koa-router": "^10.0.0",
+    "koa-static": "^5.0.0",
+    "koa-useragent": "^4.0.0",
+    "mongodb": "^4.0.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}
