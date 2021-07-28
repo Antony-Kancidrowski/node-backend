@@ -119,6 +119,27 @@ exports.deleteCakeById = async (cakeID, db) => {
 	return success;
 }
 
+/**
+ * 
+ * @param {*} cakes 
+ * @param {*} db 
+ * @returns 
+ */
+exports.seedcakes = async (cakes, db) => {
+  try {
+
+    await db.collection('cake').deleteMany({});
+    await db.collection('cake').insertMany(cakes);
+
+  } catch(e) {
+    console.log(e);
+
+    throw { message: e.message, status: e.status || 400 }
+  }
+
+  return true;
+}
+
 exports.validateCake = async (cake) => {
   
   // Check Existence

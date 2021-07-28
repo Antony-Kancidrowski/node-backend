@@ -2,10 +2,13 @@
  * Copyright (c) 2021 Antony Kancidrowski
  */
 
- var MongoClient = require('mongodb').MongoClient;
- const databaseConfig = require('./databaseConfig');
+var MongoClient = require('mongodb').MongoClient;
+const databaseConfig = require('./databaseConfig');
 
- /**
+const cakes = require('../database/data/cakeSeedData');
+const cakeDao = require('../dao/cakeDao');
+
+/**
  * Create a mongodb connection and returns a single connection object
  * @param  {Boolean} test - Test DB or Production DB
  * @return       Database connection
@@ -30,7 +33,7 @@ exports.createConnection = async (test) => {
  * Create the collections if they do not exist
  * @param {Boolean} test - Test DB or Production DB
  */
- exports.createCollections = async (test) => {
+exports.createCollections = async (test) => {
 	const db = await this.createConnection(test);
 
 	const collect = databaseConfig.collections;
@@ -53,5 +56,19 @@ exports.createConnection = async (test) => {
 	await db.close();
 }
 
+/**
+ * 
+ * @param {*} test 
+ */
+exports.seedDatabase = async (test) => {
+  const db = await this.createConnection(test);
+
+  await cakeDao.seedcakes(cakes.cakeSeedData, db);
+
+  await db.close();
+}
+
 this.createCollections();
 this.createCollections(true);
+
+this.seedDatabase();
