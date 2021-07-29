@@ -244,9 +244,93 @@ describe('createACake', () => {
 /**
  * 
  */
- describe('test', () => {
-	test('Create an valid cake', async () => {
-		expect.assertions(0);
+ describe('nameString', () => {
+	test('Create an invalid cake', async () => {
+		expect.assertions(1);
+
+		const db = await databaseCreator.createConnection(true);
+
+		const cakedetails = {
+      cakeID: "17a03080-46cb-31c5-86b2-e744601b33b5",
+      name: 1,
+      comment: "2",
+      imageUrl: "3",
+      yumFactor: 1
+		}
+
+    try {
+		  await cakeDao.createCake(cakedetails, db);
+    } catch (e) {
+
+      expect(e.message).toMatch('Document failed validation')
+    }
+
+		db.close();
+	});
+});
+
+/**
+ * 
+ */
+ describe('commentString', () => {
+	test('Create an invalid cake', async () => {
+		expect.assertions(1);
+
+		const db = await databaseCreator.createConnection(true);
+
+		const cakedetails = {
+      cakeID: "17a03080-46cb-31c5-86b2-e744601b33b5",
+      name: "1",
+      comment: 2,
+      imageUrl: "3",
+      yumFactor: 1
+		}
+
+    try {
+		  await cakeDao.createCake(cakedetails, db);
+    } catch (e) {
+
+      expect(e.message).toMatch('Document failed validation')
+    }
+
+		db.close();
+	});
+});
+
+/**
+ * 
+ */
+ describe('imageUrlString', () => {
+	test('Create an invalid cake', async () => {
+		expect.assertions(1);
+
+		const db = await databaseCreator.createConnection(true);
+
+		const cakedetails = {
+      cakeID: "17a03080-46cb-31c5-86b2-e744601b33b5",
+      name: "1",
+      comment: "2",
+      imageUrl: 3,
+      yumFactor: 1
+		}
+
+    try {
+		  await cakeDao.createCake(cakedetails, db);
+    } catch (e) {
+
+      expect(e.message).toMatch('Document failed validation')
+    }
+
+		db.close();
+	});
+});
+
+/**
+ * 
+ */
+ describe('yumFactorNumber', () => {
+	test('Create an invalid cake', async () => {
+		expect.assertions(1);
 
 		const db = await databaseCreator.createConnection(true);
 
@@ -255,10 +339,71 @@ describe('createACake', () => {
       name: "1",
       comment: "2",
       imageUrl: "3",
-      yumFactor: 4
+      yumFactor: "4"
 		}
 
-    const res = await cakeDao.createCake(cakedetails, db);
+    try {
+		  await cakeDao.createCake(cakedetails, db);
+    } catch (e) {
+
+      expect(e.message).toMatch('Document failed validation')
+    }
+
+		db.close();
+	});
+});
+
+/**
+ * 
+ */
+ describe('nameOverLength', () => {
+	test('Create an invalid cake', async () => {
+		expect.assertions(1);
+
+		const db = await databaseCreator.createConnection(true);
+
+		const cakedetails = {
+      cakeID: "17a03080-46cb-31c5-86b2-e744601b33b5",
+      name: "1234567890123456789012345678901",
+      comment: "2",
+      imageUrl: "3",
+      yumFactor: 1
+		}
+
+    try {
+		  await cakeDao.createCake(cakedetails, db);
+    } catch (e) {
+
+      expect(e.message).toMatch('Name field has a maximum of 30 characters')
+    }
+
+		db.close();
+	});
+});
+
+/**
+ * 
+ */
+ describe('commentOverLength', () => {
+	test('Create an invalid cake', async () => {
+		expect.assertions(1);
+
+		const db = await databaseCreator.createConnection(true);
+
+		const cakedetails = {
+      cakeID: "17a03080-46cb-31c5-86b2-e744601b33b5",
+      name: "1",
+      comment: "123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901",
+      imageUrl: "3",
+      yumFactor: 1
+		}
+
+    try {
+		  await cakeDao.createCake(cakedetails, db);
+    } catch (e) {
+
+      expect(e.message).toMatch('Comment field has a maximum of 200 characters')
+    }
 
 		db.close();
 	});

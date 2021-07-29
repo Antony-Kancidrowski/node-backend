@@ -150,5 +150,7 @@ exports.validateCake = async (cake) => {
   if (cake.yumFactor == undefined) throw { message:"Missing yumFactor", status: 400 }
 
   // Check restrictions
+  if (cake.name.length > 30) throw { message:"Name field has a maximum of 30 characters", status: 400 }
+  if (cake.comment.length >200) throw { message:"Comment field has a maximum of 200 characters", status: 400 }
   if ((cake.yumFactor < 1) || (cake.yumFactor > 5)) throw { message:"Yum factor should be a number between 1 and 5 inclusive", status: 400 }
 }
