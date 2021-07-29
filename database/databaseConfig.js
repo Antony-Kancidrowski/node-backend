@@ -3,7 +3,7 @@
  */
 
 exports.address = {
-	addressPrefix: `mongodb://localhost:27017/`,
+	addressPrefix: process.env.MONGO_DB || `mongodb://localhost:27017/`,
 	test:'cake_test',
 	production:'cake',
 };
