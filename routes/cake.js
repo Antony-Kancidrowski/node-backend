@@ -101,6 +101,8 @@ router.post('/createcake',
 
       await cakeDao.createCake(cake, db);
 
+      ctx.response.status = 200;
+
     } catch(error) {
         
       ctx.response.status = error.status || 400;

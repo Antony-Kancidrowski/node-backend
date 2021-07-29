@@ -240,3 +240,26 @@ describe('createACake', () => {
 		db.close();
 	});
 });
+
+/**
+ * 
+ */
+ describe('test', () => {
+	test('Create an valid cake', async () => {
+		expect.assertions(0);
+
+		const db = await databaseCreator.createConnection(true);
+
+		const cakedetails = {
+      cakeID: "17a03080-46cb-31c5-86b2-e744601b33b5",
+      name: "1",
+      comment: "2",
+      imageUrl: "3",
+      yumFactor: 4
+		}
+
+    const res = await cakeDao.createCake(cakedetails, db);
+
+		db.close();
+	});
+});

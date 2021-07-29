@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for database/databaseConfig.js</title>
+    <title>Code coverage report for database/data/cakeSeedData.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../prettify.css" />
-    <link rel="stylesheet" href="../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">database</a> databaseConfig.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">database/data</a> cakeSeedData.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
@@ -93,25 +93,7 @@
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a>
-<a name='L41'></a><a href='#L41'>41</a>
-<a name='L42'></a><a href='#L42'>42</a>
-<a name='L43'></a><a href='#L43'>43</a>
-<a name='L44'></a><a href='#L44'>44</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -143,49 +125,46 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
- * Copyright (c) 2021 Antony Kancidrowski
- */
-&nbsp;
-exports.address = {
-	addressPrefix: `mongodb://localhost:27017/`,
-	test:'cake_test',
-	production:'cake',
-};
-&nbsp;
-// MongoDB collections
-exports.collections = [
-	{
-		name:"cake",
-		options:{
-			validator:{
-				$jsonSchema: {
-					bsonType: "object",
-					required:["cakeID", "name", "comment", "imageUrl", "yumFactor"],
-					properties:{
-						cakeID:{
-							bsonType: "string",
-						},
-            name:{
-							bsonType: "string",
-						},
-            comment:{
-							bsonType: "string",
-						},
-            imageUrl:{
-							bsonType: "string",
-						},
-            yumFactor:{
-							bsonType: "int",
-						},
-					},
-				},
-			},
-		},
-		index:{
-			"cakeID" : 1,
-		}
-	}
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">exports.cakeSeedData = [
+  {
+    cakeID: "0308017a-31c5-46cb-86b2-e744601b33b5",
+    name: "Black Forest Gataux",
+    comment: "Rich, dark and exceedingly good.",
+    imageUrl: "17a03080-1c35-b46c-b286-744601be33b5.jpeg",
+    yumFactor: 5
+  },
+  {
+    cakeID: "1308017a-41c5-56cb-86b2-e744601b33b5",
+    name: "Chocolate Fudge Cake",
+    comment: "Overly indulgent.",
+    imageUrl: "27a03080-2c35-d46c-b286-744601be33b5.jpeg",
+    yumFactor: 5
+  },
+  {
+    cakeID: "2308017a-51c5-56cb-86b2-e744601b33b5",
+    name: "Strawberry Cake",
+    comment: "One of your five a day.",
+    imageUrl: "37a03080-3c35-d46c-b286-744601be33b5.jpeg",
+    yumFactor: 4
+  },
+  {
+    cakeID: "3308017a-51c5-56cb-86b2-e744601b33b5",
+    name: "Wedding Cake",
+    comment: "For the best day of your life.",
+    imageUrl: "47a03080-3c35-d46c-b286-744601be33b5.jpeg",
+    yumFactor: 3
+  },
+  {
+    cakeID: "4308017a-51c5-56cb-86b2-e744601b33b5",
+    name: "Cheese Cake",
+    comment: "Blackcurrent, my favourite.",
+    imageUrl: "74a03080-3c35-d46c-b286-744601be33b5.jpeg",
+    yumFactor: 5
+  },
 ];</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -196,14 +175,14 @@ exports.collections = [
                 at Thu Jul 29 2021 11:08:51 GMT+0100 (British Summer Time)
             </div>
         </div>
-        <script src="../prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../sorter.js"></script>
-        <script src="../block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     
