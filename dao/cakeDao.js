@@ -3,7 +3,7 @@
  */
 
 /**
- * 
+ * Get an array of all cake data
  * @param {*} db 
  * @returns 
  */
@@ -28,7 +28,7 @@
 }
 
 /**
- * 
+ * Get an individual cake based on its ID
  * @param {*} cakeID 
  * @param {*} db 
  * @returns 
@@ -61,7 +61,7 @@ exports.getCakeById = async (cakeID, db) => {
 }
 
 /**
- * 
+ * Create a new cake
  * @param {*} cake
  * @param {*} db 
  * @returns 
@@ -89,15 +89,13 @@ exports.createCake = async (cake, db) => {
 }
 
 /**
- * 
+ * Delete a cake
  * @param {*} cakeID 
  * @param {*} db 
  * @returns 
  */
 exports.deleteCakeById = async (cakeID, db) => {
   
-  var success;
-
 	try {
 
     const res = await db.collection('cake').deleteOne(
@@ -115,8 +113,6 @@ exports.deleteCakeById = async (cakeID, db) => {
 
     throw error;
   }
-	
-	return success;
 }
 
 /**
@@ -126,6 +122,7 @@ exports.deleteCakeById = async (cakeID, db) => {
  * @returns 
  */
 exports.seedcakes = async (cakes, db) => {
+
   try {
 
     await db.collection('cake').deleteMany({});
@@ -140,6 +137,10 @@ exports.seedcakes = async (cakes, db) => {
   return true;
 }
 
+/**
+ * Check the data for validity...throw if not valid with an appropriate message.
+ * @param {*} cake 
+ */
 exports.validateCake = async (cake) => {
   
   // Check Existence

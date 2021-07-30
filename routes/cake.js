@@ -2,6 +2,8 @@
  * Copyright (c) 2021 Antony Kancidrowski
  */
 
+const cakeApiVersion = 'v1.0.0';
+
 const cakeDao = require('../dao/cakeDao');
 const databaseCreator = require('../database/databaseCreator');
 
@@ -10,8 +12,9 @@ const koaBody = require('koa-body')({multipart: true, uploadDir: '.'});
 
 const uuid = require('uuid');
 
+
 const router = Router({
-    prefix: '/api/v1.0.0/cake'
+    prefix: '/api/' + cakeApiVersion + '/cake'
 });
 
 /**
@@ -20,7 +23,7 @@ const router = Router({
 router.get('/version',
   koaBody,
   async(ctx) => {
-    ctx.body = { message:"Success", version: "v1.0.0" };
+    ctx.body = { message:"Success", version: cakeApiVersion };
     ctx.response.status = 200;
   }
 );
