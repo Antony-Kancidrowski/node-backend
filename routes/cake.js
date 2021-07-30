@@ -13,6 +13,9 @@ const koaBody = require('koa-body')({multipart: true, uploadDir: '.'});
 const uuid = require('uuid');
 
 
+const cakes = require('../database/data/cakeSeedData');
+
+
 const router = Router({
     prefix: '/api/' + cakeApiVersion + '/cake'
 });
@@ -103,6 +106,28 @@ router.post('/createcake',
       var cake = {cakeID: cakeID, ...cakeDetails };
 
       await cakeDao.createCake(cake, db);
+
+      ctx.response.status = 200;
+
+    } catch(error) {
+        
+      ctx.response.status = error.status || 400;
+      ctx.body = { message:error.message };
+    } finally {
+
+        db.close();
+    }
+  }
+);
+
+router.post('/seedcakes',koaBody,
+  async(ctx) => {
+
+    var db = await databaseCreator.createConnection();
+
+    try {
+
+      await cakeDao.seedcakes(cakes.cakeSeedData, db);
 
       ctx.response.status = 200;
 

@@ -45,7 +45,7 @@ exports.createCollections = async (test) => {
 
       await db.createCollection(collection.name, collection.options);
 
-      if(collection.index) {
+      if (collection.index) {
 
         await db.collection(collection.name).createIndex(collection.index, {unique:true});
       }
@@ -57,7 +57,7 @@ exports.createCollections = async (test) => {
 }
 
 /**
- * 
+ * Seed the database with initial data
  * @param {*} test 
  */
 exports.seedDatabase = async (test) => {
